@@ -1,13 +1,14 @@
 package display;
 
 import javafx.application.Application;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class GUIDisplay extends Application implements SystemDisplay {
 
 	@Override
 	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
+		GridPane pane = new GridPane();
 
 	}
 
