@@ -1,15 +1,35 @@
 package display;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class GUIDisplay extends Application implements SystemDisplay {
+	private Text systemStatus = new Text("Test");
 
 	@Override
-	public void start(Stage arg0) throws Exception {
+	public void start(Stage primaryStage) throws Exception {
 		GridPane pane = new GridPane();
 
+		pane.setPadding(new Insets(10, 10, 10, 10));
+		pane.add(systemStatus, 0, 0);
+
+		Scene scene = new Scene(pane);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Security System");
+
+		primaryStage.show();
+		primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent window) {
+				System.exit(0);
+			}
+		});
 	}
 
 	/**
