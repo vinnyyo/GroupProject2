@@ -1,12 +1,16 @@
 package display;
 
+import buttons.AwayButton;
+import buttons.CancelButton;
+import buttons.MotionDetectorButton;
+import buttons.StayButton;
+import buttons.ZonesPane;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
@@ -19,9 +23,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import states.SystemContext;
 
 public class GUIDisplay extends Application implements SystemDisplay {
-	private TextArea systemStatus = new TextArea("Test");
+	private TextArea systemStatus = new TextArea();
 	private Button oneButton = new Button("1");
 	private Button twoButton = new Button("2");
 	private Button threeButton = new Button("3");
@@ -32,24 +37,22 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	private Button eightButton = new Button("8");
 	private Button nineButton = new Button("9");
 	private Button zeroButton = new Button("0");
-	private CheckBox zone1CheckBox = new CheckBox("Zone 1");
-	private CheckBox zone2CheckBox = new CheckBox("Zone 2");
-	private CheckBox zone3CheckBox = new CheckBox("Zone 3");
-	private Text statusText = new Text("Ready Status");
-	private Button motionDetectorButton = new Button("Motion Detector");
-	private Button stayButton = new Button("Stay");
-	private Button awayButton = new Button("Away");
-	private Button cancelButton = new Button("Cancel");
+	private AwayButton stayButton = new AwayButton();
+	private StayButton awayButton = new StayButton();
+	private MotionDetectorButton motionDetectorButton = new MotionDetectorButton();
+	private CancelButton cancelButton = new CancelButton();
+	private ZonesPane zonesPane = new ZonesPane();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		SystemContext.instance().setDisplay(this);
 		GridPane buttonPane = new GridPane();
 		GridPane topPane = new GridPane();
 		GridPane bottomPane = new GridPane();
 		BorderPane outsidePane = new BorderPane();
 		BorderPane insidePane = new BorderPane();
-		GridPane zonesPane = new GridPane();
 		GridPane stayAwayCancelPane = new GridPane();
+		GridPane bottomLeftPane = new GridPane();
 		outsidePane.setPadding(new Insets(10, 10, 10, 10));
 		insidePane.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii(8), new BorderWidths(2, 2, 2, 2))));
 		outsidePane.setCenter(insidePane);
@@ -66,24 +69,18 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		buttonPane.add(zeroButton, 1, 3);
 		
 		GridPane.setConstraints(systemStatus, 1, 0, 100, 4);
+		systemStatus.setPromptText("Ready");
 		systemStatus.setPrefRowCount(5);
 		systemStatus.setEditable(false);
 
 		buttonPane.add(systemStatus, 4, 0);
 		topPane.add(buttonPane, 0, 0);
 
-		GridPane.setConstraints(statusText, 0, 1, 2, 1);
-		GridPane.setHalignment(statusText, HPos.CENTER);
-		
 		GridPane.setConstraints(motionDetectorButton, 0, 2, 2, 1);
 		GridPane.setHalignment(motionDetectorButton, HPos.CENTER);
 
-		zonesPane.setHgap(10);
-		zonesPane.add(zone1CheckBox, 0, 0);
-		zonesPane.add(zone2CheckBox, 1, 0);
-		zonesPane.add(zone3CheckBox, 2, 0);
-		zonesPane.add(statusText, 0, 1);
-		zonesPane.add(motionDetectorButton, 0, 2);
+		bottomLeftPane.add(zonesPane, 0, 0);
+		bottomLeftPane.add(motionDetectorButton, 0, 2);
 		
 		stayAwayCancelPane.add(new Text("          "), 0, 0);
 		stayAwayCancelPane.add(stayButton, 1, 0);
@@ -92,7 +89,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		stayAwayCancelPane.add(cancelButton, 4, 0);
 		GridPane.setHalignment(stayAwayCancelPane, HPos.CENTER);
 		
-		bottomPane.add(zonesPane, 0, 0);
+		bottomPane.add(bottomLeftPane, 0, 0);
 		bottomPane.add(stayAwayCancelPane, 1, 0);
 		
 		BorderPane.setMargin(topPane, new Insets(10, 10, 10, 10));
@@ -124,7 +121,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	 */
 	@Override
 	public void showCountDown(int time) {
-		// TODO Auto-generated method stub
+		systemStatus.setPromptText("Countdown will display here.");
 
 	}
 
@@ -133,7 +130,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	 */
 	@Override
 	public void showZonesReady() {
-		// TODO Auto-generated method stub
+		systemStatus.setPromptText("Zones Ready");
 
 	}
 
@@ -142,8 +139,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	 */
 	@Override
 	public void showZonesNotReady() {
-		// TODO Auto-generated method stub
-
+		systemStatus.setPromptText("Zones Not Ready");
 	}
 
 	/**
@@ -151,8 +147,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	 */
 	@Override
 	public void showAwayArmed() {
-		// TODO Auto-generated method stub
-
+		systemStatus.setPromptText("Away armed\n\rPress cancel to Unarm");
 	}
 
 	/**
@@ -160,8 +155,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	 */
 	@Override
 	public void showStayArmed() {
-		// TODO Auto-generated method stub
-
+		systemStatus.setPromptText("Stay armed\n\rPress cancel to Unarm");
 	}
 
 	/**
@@ -169,35 +163,35 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	 */
 	@Override
 	public void showSecurityBreach() {
-		// TODO Auto-generated method stub
-
+		systemStatus.setPromptText(" *** Security Breach ***\n\rEnter password.");
 	}
 
 	/**
 	 * Signify that away is counting down
 	 */
 	@Override
-	public void showAwayCountDown() {
-		// TODO Auto-generated method stub
-
+	public void showAwayCountDown(int time) {
+		systemStatus.setPromptText("Away Countdown " + time);
 	}
 
 	/**
 	 * Signify that stay is counting down
 	 */
 	@Override
-	public void showStayCountDown() {
-		// TODO Auto-generated method stub
-
+	public void showStayCountDown(int time) {
+		systemStatus.setPromptText("Stay Countdown " + time);
 	}
 
 	/**
 	 * Signify that security breach is counting down
 	 */
 	@Override
-	public void showSecurityBreachCountDown() {
-		// TODO Auto-generated method stub
-
+	public void showSecurityBreachCountDown(int time) {
+		systemStatus.setPromptText("Breach countdown " + time + "\n\rEnter password.");
 	}
-
+	
+	@Override
+	public boolean getZonesReady() {
+		return zonesPane.isReady();
+	}
 }

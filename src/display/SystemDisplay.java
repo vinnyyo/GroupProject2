@@ -41,17 +41,20 @@ public interface SystemDisplay {
 	public void showSecurityBreach();
 
 	/**
-	 * Signify that away is counting down
+	 * Signify that security breach is counting down
 	 */
-	public void showAwayCountDown();
+	public void showSecurityBreachCountDown(int time);
+
+	/**
+	 * Signify that away is counting down with time
+	 */
+	public void showAwayCountDown(int time);
 
 	/**
 	 * Signify that stay is counting down
 	 */
-	public void showStayCountDown();
+	public void showStayCountDown(int time);
 
-	/**
-	 * Signify that security breach is counting down
-	 */
-	public void showSecurityBreachCountDown();
+	public boolean getZonesReady();
+
 }
