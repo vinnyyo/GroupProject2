@@ -1,5 +1,6 @@
 package states;
 
+import events.CorrectCodeEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
 import timer.Notifiable;
@@ -8,18 +9,18 @@ import timer.Timer;
 public class AwayCountdownState extends SystemState implements Notifiable {
 	private static AwayCountdownState instance;
 	Timer timer;
-	
+
 	private AwayCountdownState() {
-		
+
 	}
-	
+
 	public static AwayCountdownState instance() {
 		if (instance == null) {
 			instance = new AwayCountdownState();
 		}
 		return instance;
 	}
-	
+
 	@Override
 	public void enter() {
 		timer = new Timer(this, 10);
@@ -30,6 +31,11 @@ public class AwayCountdownState extends SystemState implements Notifiable {
 	public void leave() {
 		timer.stop();
 		timer = null;
+	}
+
+	@Override
+	public void handleEvent(CorrectCodeEvent event) {
+		SystemContext.instance().changeState(ZonesReadyState.instance());
 	}
 
 	@Override

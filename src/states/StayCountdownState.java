@@ -1,5 +1,6 @@
 package states;
 
+import events.CorrectCodeEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
 import timer.Notifiable;
@@ -8,18 +9,23 @@ import timer.Timer;
 public class StayCountdownState extends SystemState implements Notifiable {
 	private static StayCountdownState instance;
 	Timer timer;
-	
+
 	private StayCountdownState() {
-		
+
 	}
-	
+
 	public static StayCountdownState instance() {
 		if (instance == null) {
 			instance = new StayCountdownState();
 		}
 		return instance;
 	}
-	
+
+	@Override
+	public void handleEvent(CorrectCodeEvent event) {
+		SystemContext.instance().changeState(ZonesReadyState.instance());
+	}
+
 	@Override
 	public void enter() {
 		timer = new Timer(this, 10);
@@ -46,4 +52,3 @@ public class StayCountdownState extends SystemState implements Notifiable {
 		}
 	}
 }
-
