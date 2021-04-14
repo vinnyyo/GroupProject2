@@ -2,15 +2,24 @@ package display;
 
 import buttons.AwayButton;
 import buttons.CancelButton;
+import buttons.EightButton;
+import buttons.FiveButton;
+import buttons.FourButton;
 import buttons.MotionDetectorButton;
+import buttons.NineButton;
+import buttons.OneButton;
+import buttons.SevenButton;
+import buttons.SixButton;
 import buttons.StayButton;
+import buttons.ThreeButton;
+import buttons.TwoButton;
+import buttons.ZeroButton;
 import buttons.ZonesPane;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
@@ -27,16 +36,16 @@ import states.SystemContext;
 
 public class GUIDisplay extends Application implements SystemDisplay {
 	private TextArea systemStatus = new TextArea();
-	private Button oneButton = new Button("1");
-	private Button twoButton = new Button("2");
-	private Button threeButton = new Button("3");
-	private Button fourButton = new Button("4");
-	private Button fiveButton = new Button("5");
-	private Button sixButton = new Button("6");
-	private Button sevenButton = new Button("7");
-	private Button eightButton = new Button("8");
-	private Button nineButton = new Button("9");
-	private Button zeroButton = new Button("0");
+	private OneButton oneButton = new OneButton();
+	private TwoButton twoButton = new TwoButton();
+	private ThreeButton threeButton = new ThreeButton();
+	private FourButton fourButton = new FourButton();
+	private FiveButton fiveButton = new FiveButton();
+	private SixButton sixButton = new SixButton();
+	private SevenButton sevenButton = new SevenButton();
+	private EightButton eightButton = new EightButton();
+	private NineButton nineButton = new NineButton();
+	private ZeroButton zeroButton = new ZeroButton();
 	private AwayButton stayButton = new AwayButton();
 	private StayButton awayButton = new StayButton();
 	private MotionDetectorButton motionDetectorButton = new MotionDetectorButton();
@@ -54,9 +63,10 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		GridPane stayAwayCancelPane = new GridPane();
 		GridPane bottomLeftPane = new GridPane();
 		outsidePane.setPadding(new Insets(10, 10, 10, 10));
-		insidePane.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii(8), new BorderWidths(2, 2, 2, 2))));
+		insidePane.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii(8),
+				new BorderWidths(2, 2, 2, 2))));
 		outsidePane.setCenter(insidePane);
-		
+
 		buttonPane.add(oneButton, 0, 0);
 		buttonPane.add(twoButton, 1, 0);
 		buttonPane.add(threeButton, 2, 0);
@@ -67,7 +77,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		buttonPane.add(eightButton, 1, 2);
 		buttonPane.add(nineButton, 2, 2);
 		buttonPane.add(zeroButton, 1, 3);
-		
+
 		GridPane.setConstraints(systemStatus, 1, 0, 100, 4);
 		systemStatus.setPromptText("Ready");
 		systemStatus.setPrefRowCount(5);
@@ -81,22 +91,22 @@ public class GUIDisplay extends Application implements SystemDisplay {
 
 		bottomLeftPane.add(zonesPane, 0, 0);
 		bottomLeftPane.add(motionDetectorButton, 0, 2);
-		
+
 		stayAwayCancelPane.add(new Text("          "), 0, 0);
 		stayAwayCancelPane.add(stayButton, 1, 0);
 		stayAwayCancelPane.add(awayButton, 2, 0);
 		stayAwayCancelPane.add(new Text("          "), 3, 0);
 		stayAwayCancelPane.add(cancelButton, 4, 0);
 		GridPane.setHalignment(stayAwayCancelPane, HPos.CENTER);
-		
+
 		bottomPane.add(bottomLeftPane, 0, 0);
 		bottomPane.add(stayAwayCancelPane, 1, 0);
-		
+
 		BorderPane.setMargin(topPane, new Insets(10, 10, 10, 10));
 		BorderPane.setMargin(bottomPane, new Insets(10, 10, 10, 10));
 		insidePane.setTop(topPane);
 		insidePane.setBottom(bottomPane);
-		
+
 		Scene scene = new Scene(outsidePane);
 		primaryStage.setHeight(220);
 		primaryStage.setWidth(500);
@@ -189,7 +199,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	public void showSecurityBreachCountDown(int time) {
 		systemStatus.setPromptText("Breach countdown " + time + "\n\rEnter password.");
 	}
-	
+
 	@Override
 	public boolean getZonesReady() {
 		return zonesPane.isReady();
