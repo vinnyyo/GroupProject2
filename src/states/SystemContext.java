@@ -31,6 +31,32 @@ public class SystemContext {
 	private SystemState currentState;
 	private SystemDisplay display;
 
+	private static int[] passcode = { 1, 2, 3, 4 };
+	private static int[] input = new int[4];
+	private static int inputLength = 0;
+
+	private boolean correctCode() {
+		for (int i = 0; i < 4; i++) {
+			if (passcode[i] != input[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private void testCode() {
+		if (inputLength == 4) {
+			if (correctCode()) {
+				SystemContext.instance().handleEvent(CorrectCodeEvent.instance());
+			}
+			input[0] = -1;
+			input[1] = -1;
+			input[2] = -1;
+			input[3] = -1;
+			inputLength = 0;
+		}
+	}
+
 	/**
 	 * Creates an instance of the SystemContext. Only Accessible within the class
 	 */
@@ -122,43 +148,53 @@ public class SystemContext {
 	}
 
 	public void handleEvent(OneButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 1;
+		testCode();
 	}
 
 	public void handleEvent(TwoButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 2;
+		testCode();
 	}
 
 	public void handleEvent(ThreeButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 3;
+		testCode();
 	}
 
 	public void handleEvent(FourButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 4;
+		testCode();
 	}
 
 	public void handleEvent(FiveButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 5;
+		testCode();
 	}
 
 	public void handleEvent(SixButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 6;
+		testCode();
 	}
 
 	public void handleEvent(SevenButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 7;
+		testCode();
 	}
 
 	public void handleEvent(EightButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 8;
+		testCode();
 	}
 
 	public void handleEvent(NineButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 9;
+		testCode();
 	}
 
 	public void handleEvent(ZeroButtonEvent event) {
-		currentState.handleEvent(event);
+		input[inputLength++] = 0;
+		testCode();
 	}
 
 	public void handleEvent(CorrectCodeEvent event) {
