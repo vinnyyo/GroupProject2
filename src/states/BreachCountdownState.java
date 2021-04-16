@@ -29,8 +29,8 @@ public class BreachCountdownState extends SystemState implements Notifiable {
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
-
+		timer.stop();
+		timer = null;
 	}
 
 	@Override
@@ -45,6 +45,10 @@ public class BreachCountdownState extends SystemState implements Notifiable {
 
 	@Override
 	public void handleEvent(CorrectCodeEvent event) {
-		SystemContext.instance().changeState(ZonesNotReadyState.instance());
+		if (SystemContext.instance().getZonesReady()) {
+			SystemContext.instance().changeState(ZonesReadyState.instance());
+		} else { 
+			SystemContext.instance().changeState(ZonesNotReadyState.instance());
+		}
 	}
 }

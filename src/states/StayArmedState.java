@@ -1,5 +1,6 @@
 package states;
 
+import events.CancelPressedEvent;
 import events.CorrectCodeEvent;
 import events.ZonesNotReadyEvent;
 
@@ -23,8 +24,8 @@ public class StayArmedState extends SystemState {
 	}
 
 	@Override
-	public void handleEvent(CorrectCodeEvent event) {
-		SystemContext.instance().changeState(ZonesReadyState.instance());
+	public void handleEvent(CancelPressedEvent event) {
+		SystemContext.instance().changeState(CancelButtonState.instance());
 	}
 
 	@Override

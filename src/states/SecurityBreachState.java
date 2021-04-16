@@ -1,7 +1,6 @@
 package states;
 
 import events.CorrectCodeEvent;
-import events.PasswordEnteredEvent;
 
 public class SecurityBreachState extends SystemState {
 	private static SecurityBreachState instance;
@@ -17,14 +16,12 @@ public class SecurityBreachState extends SystemState {
 		return instance;
 	}
 
-	@Override
-	public void handleEvent(PasswordEnteredEvent event) {
-		SystemContext.instance().changeState(ZonesNotReadyState.instance());
-	}
-
-	@Override
 	public void handleEvent(CorrectCodeEvent event) {
-		SystemContext.instance().changeState(ZonesNotReadyState.instance());
+		if (SystemContext.instance().getZonesReady()) {
+			SystemContext.instance().changeState(ZonesReadyState.instance());
+		} else { 
+			SystemContext.instance().changeState(ZonesNotReadyState.instance());
+		}
 	}
 
 	@Override

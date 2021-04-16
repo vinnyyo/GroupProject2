@@ -142,6 +142,10 @@ public class SystemContext {
 	public void showSecurityBreachCountdown(int time) {
 		display.showSecurityBreachCountDown(time);
 	}
+	
+	public void showEnterPassword() {
+		display.showEnterPassword();
+	}
 
 	public boolean getZonesReady() {
 		return display.getZonesReady();

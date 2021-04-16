@@ -55,6 +55,11 @@ public interface SystemDisplay {
 	 */
 	public void showStayCountDown(int time);
 
+	/**
+	 * Boolean value of the current zone status
+	 */
 	public boolean getZonesReady();
+
+	void showEnterPassword();
 
 }

@@ -9,7 +9,6 @@ import events.FourButtonEvent;
 import events.MotionDetectedEvent;
 import events.NineButtonEvent;
 import events.OneButtonEvent;
-import events.PasswordEnteredEvent;
 import events.SevenButtonEvent;
 import events.SixButtonEvent;
 import events.StayPressedEvent;
@@ -59,10 +58,6 @@ public abstract class SystemState {
 	}
 
 	public void handleEvent(MotionDetectedEvent event) {
-
-	}
-
-	public void handleEvent(PasswordEnteredEvent event) {
 
 	}
 

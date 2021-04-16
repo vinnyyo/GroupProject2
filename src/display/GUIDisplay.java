@@ -199,6 +199,11 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	public void showSecurityBreachCountDown(int time) {
 		systemStatus.setPromptText("Breach countdown " + time + "\n\rEnter password.");
 	}
+	
+	@Override
+	public void showEnterPassword() {
+		systemStatus.setPromptText("Enter Password.");
+	}
 
 	@Override
 	public boolean getZonesReady() {
