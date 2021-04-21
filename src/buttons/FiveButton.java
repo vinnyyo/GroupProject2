@@ -4,8 +4,17 @@ import events.FiveButtonEvent;
 import javafx.event.ActionEvent;
 import states.SystemContext;
 
+/**
+ * The button for the five digit
+ * 
+ * @author Vincent Peterson
+ *
+ */
 public class FiveButton extends GUIButton {
 
+	/**
+	 * The button for the five digit
+	 */
 	public FiveButton() {
 		super("5");
 	}
