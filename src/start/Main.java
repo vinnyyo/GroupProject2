@@ -15,12 +15,11 @@ public class Main {
 			}
 		}.start();
 //		try {
-//            while (GUIDisplay.getInstance() == null) {
-//                Thread.sleep(1000);
-//            }
-//        } catch (InterruptedException ie) {
-//        }
-//		
+//			while (GUIDisplay.getInstance() == null) {
+//				Thread.sleep(1000);
+//			}
+//		} catch (InterruptedException ie) {
+//		}
 
 	}
 }
