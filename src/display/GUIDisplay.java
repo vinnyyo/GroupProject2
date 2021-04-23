@@ -93,8 +93,8 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		bottomLeftPane.add(motionDetectorButton, 0, 2);
 
 		stayAwayCancelPane.add(new Text("          "), 0, 0);
-		stayAwayCancelPane.add(stayButton, 1, 0);
-		stayAwayCancelPane.add(awayButton, 2, 0);
+		stayAwayCancelPane.add(stayButton, 2, 0);
+		stayAwayCancelPane.add(awayButton, 1, 0);
 		stayAwayCancelPane.add(new Text("          "), 3, 0);
 		stayAwayCancelPane.add(cancelButton, 4, 0);
 		GridPane.setHalignment(stayAwayCancelPane, HPos.CENTER);
