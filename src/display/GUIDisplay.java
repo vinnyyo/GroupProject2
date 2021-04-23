@@ -34,6 +34,13 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import states.SystemContext;
 
+/**
+ * This class constructs the security system display, and contains methods to
+ * manipulate what is displayed.
+ * 
+ * @author Michael Olson and Vincent Peterson
+ *
+ */
 public class GUIDisplay extends Application implements SystemDisplay {
 	private TextArea systemStatus = new TextArea();
 	private OneButton oneButton = new OneButton();
@@ -207,6 +214,9 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		displayInput();
 	}
 
+	/**
+	 * Signifies that the password need be entered.
+	 */
 	@Override
 	public void showEnterPassword() {
 		systemStatus.setPromptText("Enter Password.");
@@ -218,14 +228,25 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		return zonesPane.isReady();
 	}
 
+	/**
+	 * Displays the numbers currently in the input.
+	 */
 	public void displayInput() {
 		systemStatus.setPromptText(systemStatus.getPromptText() + "\n\r" + SystemContext.instance().getInput());
 	}
 
+	/**
+	 * Appends the string given to the display.
+	 * 
+	 * @param number - the String to be appended.
+	 */
 	public void inputCharacter(String number) {
 		systemStatus.setPromptText(systemStatus.getPromptText() + number);
 	}
 
+	/**
+	 * Erases the last eight characters from the display.
+	 */
 	public void resetInput() {
 		systemStatus
 				.setPromptText(systemStatus.getPromptText().substring(0, systemStatus.getPromptText().length() - 8));

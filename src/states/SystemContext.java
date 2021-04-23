@@ -21,9 +21,9 @@ import events.ZonesReadyEvent;
 
 /**
  * Context of the Security System. Holds / Controls state of system. It is using
- * a Singleton Paradigm
+ * a Singleton Paradigm.
  * 
- * @author Michael Olson
+ * @author Michael Olson and Vincent Peterson
  *
  */
 public class SystemContext {
@@ -35,6 +35,11 @@ public class SystemContext {
 	private static int[] input = { -1, -1, -1, -1 };
 	private static int inputLength = 0;
 
+	/**
+	 * A method that returns the input as a string
+	 * 
+	 * @return the input as a string
+	 */
 	public String getInput() {
 		String output = "";
 		for (int i = 0; i < 4; i++) {
