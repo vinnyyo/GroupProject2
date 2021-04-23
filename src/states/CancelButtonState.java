@@ -35,7 +35,11 @@ public class CancelButtonState extends SystemState {
 	 */
 	@Override
 	public void handleEvent(CorrectCodeEvent event) {
-		SystemContext.instance().changeState(ZonesReadyState.instance());
+		if (SystemContext.instance().getZonesReady()) {
+			SystemContext.instance().changeState(ZonesReadyState.instance());
+		} else { 
+			SystemContext.instance().changeState(ZonesNotReadyState.instance());
+		}
 	}
 
 	/**
