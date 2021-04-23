@@ -79,7 +79,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 		buttonPane.add(zeroButton, 1, 3);
 
 		GridPane.setConstraints(systemStatus, 1, 0, 100, 4);
-		systemStatus.setPromptText("Ready");
+		systemStatus.setPromptText("Ready\n\r");
 		systemStatus.setPrefRowCount(5);
 		systemStatus.setEditable(false);
 
@@ -141,7 +141,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showZonesReady() {
 		systemStatus.setPromptText("Zones Ready");
-
+		displayInput();
 	}
 
 	/**
@@ -150,6 +150,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showZonesNotReady() {
 		systemStatus.setPromptText("Zones Not Ready");
+		displayInput();
 	}
 
 	/**
@@ -158,6 +159,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showAwayArmed() {
 		systemStatus.setPromptText("Away armed\n\rPress cancel to Unarm");
+		displayInput();
 	}
 
 	/**
@@ -166,6 +168,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showStayArmed() {
 		systemStatus.setPromptText("Stay armed\n\rPress cancel to Unarm");
+		displayInput();
 	}
 
 	/**
@@ -174,6 +177,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showSecurityBreach() {
 		systemStatus.setPromptText(" *** Security Breach ***\n\rEnter password.");
+		displayInput();
 	}
 
 	/**
@@ -182,6 +186,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showAwayCountDown(int time) {
 		systemStatus.setPromptText("Away Countdown " + time);
+		displayInput();
 	}
 
 	/**
@@ -190,6 +195,7 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showStayCountDown(int time) {
 		systemStatus.setPromptText("Stay Countdown " + time);
+		displayInput();
 	}
 
 	/**
@@ -198,15 +204,30 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	@Override
 	public void showSecurityBreachCountDown(int time) {
 		systemStatus.setPromptText("Breach countdown " + time + "\n\rEnter password.");
+		displayInput();
 	}
-	
+
 	@Override
 	public void showEnterPassword() {
 		systemStatus.setPromptText("Enter Password.");
+		displayInput();
 	}
 
 	@Override
 	public boolean getZonesReady() {
 		return zonesPane.isReady();
+	}
+
+	public void displayInput() {
+		systemStatus.setPromptText(systemStatus.getPromptText() + "\n\r" + SystemContext.instance().getInput());
+	}
+
+	public void inputCharacter(String number) {
+		systemStatus.setPromptText(systemStatus.getPromptText() + number);
+	}
+
+	public void resetInput() {
+		systemStatus
+				.setPromptText(systemStatus.getPromptText().substring(0, systemStatus.getPromptText().length() - 8));
 	}
 }

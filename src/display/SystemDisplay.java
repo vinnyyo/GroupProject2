@@ -62,4 +62,8 @@ public interface SystemDisplay {
 
 	void showEnterPassword();
 
+	public void inputCharacter(String string);
+
+	public void resetInput();
+
 }
