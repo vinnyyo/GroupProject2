@@ -60,6 +60,21 @@ public interface SystemDisplay {
 	 */
 	public boolean getZonesReady();
 
+	/**
+	 * Signify that the password needs to be entered
+	 */
 	void showEnterPassword();
+
+	/**
+	 * Displays the character entered
+	 * 
+	 * @param string - the string to display
+	 */
+	public void inputCharacter(String string);
+
+	/**
+	 * Resets the input on the display
+	 */
+	public void resetInput();
 
 }

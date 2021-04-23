@@ -21,9 +21,9 @@ import events.ZonesReadyEvent;
 
 /**
  * Context of the Security System. Holds / Controls state of system. It is using
- * a Singleton Paradigm
+ * a Singleton Paradigm.
  * 
- * @author Michael Olson
+ * @author Michael Olson and Vincent Peterson
  *
  */
 public class SystemContext {
@@ -32,8 +32,23 @@ public class SystemContext {
 	private SystemDisplay display;
 
 	private static int[] passcode = { 1, 2, 3, 4 };
-	private static int[] input = new int[4];
+	private static int[] input = { -1, -1, -1, -1 };
 	private static int inputLength = 0;
+
+	/**
+	 * A method that returns the input as a string
+	 * 
+	 * @return the input as a string
+	 */
+	public String getInput() {
+		String output = "";
+		for (int i = 0; i < 4; i++) {
+			if (input[i] > -1) {
+				output += String.valueOf(input[i]) + " ";
+			}
+		}
+		return output;
+	}
 
 	private boolean correctCode() {
 		for (int i = 0; i < 4; i++) {
@@ -54,6 +69,7 @@ public class SystemContext {
 			input[2] = -1;
 			input[3] = -1;
 			inputLength = 0;
+			display.resetInput();
 		}
 	}
 
@@ -142,7 +158,7 @@ public class SystemContext {
 	public void showSecurityBreachCountdown(int time) {
 		display.showSecurityBreachCountDown(time);
 	}
-	
+
 	public void showEnterPassword() {
 		display.showEnterPassword();
 	}
@@ -153,51 +169,61 @@ public class SystemContext {
 
 	public void handleEvent(OneButtonEvent event) {
 		input[inputLength++] = 1;
+		display.inputCharacter("1 ");
 		testCode();
 	}
 
 	public void handleEvent(TwoButtonEvent event) {
 		input[inputLength++] = 2;
+		display.inputCharacter("2 ");
 		testCode();
 	}
 
 	public void handleEvent(ThreeButtonEvent event) {
 		input[inputLength++] = 3;
+		display.inputCharacter("3 ");
 		testCode();
 	}
 
 	public void handleEvent(FourButtonEvent event) {
 		input[inputLength++] = 4;
+		display.inputCharacter("4 ");
 		testCode();
 	}
 
 	public void handleEvent(FiveButtonEvent event) {
 		input[inputLength++] = 5;
+		display.inputCharacter("5 ");
 		testCode();
 	}
 
 	public void handleEvent(SixButtonEvent event) {
 		input[inputLength++] = 6;
+		display.inputCharacter("6 ");
 		testCode();
 	}
 
 	public void handleEvent(SevenButtonEvent event) {
 		input[inputLength++] = 7;
+		display.inputCharacter("7 ");
 		testCode();
 	}
 
 	public void handleEvent(EightButtonEvent event) {
 		input[inputLength++] = 8;
+		display.inputCharacter("8 ");
 		testCode();
 	}
 
 	public void handleEvent(NineButtonEvent event) {
 		input[inputLength++] = 9;
+		display.inputCharacter("9 ");
 		testCode();
 	}
 
 	public void handleEvent(ZeroButtonEvent event) {
 		input[inputLength++] = 0;
+		display.inputCharacter("0 ");
 		testCode();
 	}
 

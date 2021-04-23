@@ -2,11 +2,24 @@ package start;
 
 import display.GUIDisplay;
 import javafx.application.Application;
+import timer.Clock;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Application.launch(GUIDisplay.class, "GUIDisplay");
+		Clock.instance();
+		new Thread() {
+			@Override
+			public void run() {
+				Application.launch(GUIDisplay.class, "GUIDisplay");
+			}
+		}.start();
+//		try {
+//			while (GUIDisplay.getInstance() == null) {
+//				Thread.sleep(1000);
+//			}
+//		} catch (InterruptedException ie) {
+//		}
 
 	}
 }
