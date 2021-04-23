@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the six button press
+ * The event that represents the six button press
  * 
  * @author Vincent Peterson
  */

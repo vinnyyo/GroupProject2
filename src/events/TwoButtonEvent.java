@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the two button press
+ * The event that represents the two button press
  * 
  * @author Vincent Peterson
  */

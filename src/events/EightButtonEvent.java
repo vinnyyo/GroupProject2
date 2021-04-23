@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the eight button press
+ * The event that represents the eight button press
  * 
  * @author Vincent Peterson
  */

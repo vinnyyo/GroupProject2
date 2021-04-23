@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents that the correct code was entered
+ * The event that represents that the correct code was entered
  * 
  * @author Vincent Peterson
  */

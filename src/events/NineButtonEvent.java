@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the nine button press
+ * The event that represents the nine button press
  * 
  * @author Vincent Peterson
  */

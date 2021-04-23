@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the four button press
+ * The event that represents the four button press
  * 
  * @author Vincent Peterson
  */

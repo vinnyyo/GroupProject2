@@ -21,7 +21,8 @@ import events.ZonesReadyEvent;
 
 /**
  * Context of the Security System. Holds / Controls state of system. It is using
- * a Singleton Paradigm.
+ * a Singleton Paradigm. Also contains and maintains the four digit passcode
+ * functionality. And contains the system display.
  * 
  * @author Michael Olson and Vincent Peterson
  *
@@ -36,7 +37,7 @@ public class SystemContext {
 	private static int inputLength = 0;
 
 	/**
-	 * A method that returns the input as a string
+	 * A method that returns the input as a string of asterisks
 	 * 
 	 * @return the input as a string
 	 */
@@ -65,7 +66,8 @@ public class SystemContext {
 	}
 
 	/**
-	 * function to test if a code is correct
+	 * Function to test if a code is correct and reset the input once 4 digits are
+	 * entered.
 	 */
 	private void testCode() {
 		if (inputLength == 4) {
@@ -83,6 +85,7 @@ public class SystemContext {
 
 	/**
 	 * Creates an instance of the SystemContext. Only Accessible within the class
+	 * for singleton functionality.
 	 */
 	private SystemContext() {
 		instance = this;
@@ -342,7 +345,9 @@ public class SystemContext {
 	}
 
 	/**
-	 * Action to take when a CorrectCodeEvent is passed
+	 * method to pass CorrectCodeEvent to the current state
+	 * 
+	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(CorrectCodeEvent event) {
 		currentState.handleEvent(event);

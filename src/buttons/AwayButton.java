@@ -6,11 +6,12 @@ import states.SystemContext;
 
 /**
  * Button to hit when we are away
- * @author michael
+ * 
+ * @author Michael Olson
  *
  */
 public class AwayButton extends GUIButton {
-	
+
 	/**
 	 * Constructor to Create the button
 	 */
@@ -21,7 +22,7 @@ public class AwayButton extends GUIButton {
 	@Override
 	public void handle(ActionEvent event) {
 		SystemContext.instance().handleEvent(AwayPressedEvent.instance());
-		
+
 	}
 
 }

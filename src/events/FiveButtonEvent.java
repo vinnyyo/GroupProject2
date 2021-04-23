@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the five button press
+ * The event that represents the five button press
  * 
  * @author Vincent Peterson
  */

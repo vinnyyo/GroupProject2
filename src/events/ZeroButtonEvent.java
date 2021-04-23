@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the zero button press
+ * The event that represents the zero button press
  * 
  * @author Vincent Peterson
  */

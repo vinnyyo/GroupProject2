@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the one button press
+ * The event that represents the one button press
  * 
  * @author Vincent Peterson
  */

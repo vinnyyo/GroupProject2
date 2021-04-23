@@ -1,7 +1,7 @@
 package events;
 
 /**
- * Represents the three button press
+ * The event that represents the three button press
  * 
  * @author Vincent Peterson
  */
