@@ -4,6 +4,11 @@ import display.GUIDisplay;
 import javafx.application.Application;
 import timer.Clock;
 
+/**
+ * Program entry Point
+ * @author Vincent Peterson
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
@@ -14,12 +19,5 @@ public class Main {
 				Application.launch(GUIDisplay.class, "GUIDisplay");
 			}
 		}.start();
-//		try {
-//			while (GUIDisplay.getInstance() == null) {
-//				Thread.sleep(1000);
-//			}
-//		} catch (InterruptedException ie) {
-//		}
-
 	}
 }

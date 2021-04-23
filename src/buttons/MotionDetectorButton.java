@@ -4,8 +4,16 @@ import events.MotionDetectedEvent;
 import javafx.event.ActionEvent;
 import states.SystemContext;
 
+/**
+ * Button to press to simulate Motion Detection
+ * @author Michael Olson
+ *
+ */
 public class MotionDetectorButton extends GUIButton {
 
+	/**
+	 * Constructor to create the button
+	 */
 	public MotionDetectorButton() {
 		super("Motion Detector");
 	}

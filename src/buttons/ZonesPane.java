@@ -10,12 +10,24 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import states.SystemContext;
 
+/**
+ * A JavaFX Pane overrided to be a Zones Pane.
+ * The pane takes care of itself, and notifies the Context if there is a change
+ * @author Michael Olson
+ *
+ */
 public class ZonesPane extends GridPane implements EventHandler<ActionEvent>{
+	// The checkboxes used in the Pane
 	private CheckBox zone1CheckBox = new CheckBox("Zone 1");
 	private CheckBox zone2CheckBox = new CheckBox("Zone 2");
 	private CheckBox zone3CheckBox = new CheckBox("Zone 3");
+	// Text to display the current status of the Zones
 	private Text statusText = new Text("System Ready");
 
+	/**
+	 * Constructor for the Pane,
+	 * Initializes all the object in the pane.
+	 */
 	public ZonesPane() {
 		super();
 		
@@ -35,6 +47,10 @@ public class ZonesPane extends GridPane implements EventHandler<ActionEvent>{
 		this.add(statusText, 0, 1);
 	}
 	
+	/**
+	 * Are the Zones ready?
+	 * @return boolean value indicating the readiness status of the zones
+	 */
 	public boolean isReady() {
 		if (zone1CheckBox.isSelected() && 
 				zone2CheckBox.isSelected() &&
