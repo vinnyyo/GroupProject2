@@ -44,7 +44,7 @@ public class SystemContext {
 		String output = "";
 		for (int i = 0; i < 4; i++) {
 			if (input[i] > -1) {
-				output += String.valueOf(input[i]) + " ";
+				output += "*" + " ";
 			}
 		}
 		return output;
@@ -52,6 +52,7 @@ public class SystemContext {
 
 	/**
 	 * Check to see if the code entered is correct
+	 * 
 	 * @return true if correct, false if not
 	 */
 	private boolean correctCode() {
@@ -102,6 +103,7 @@ public class SystemContext {
 
 	/**
 	 * Sets the display of the system
+	 * 
 	 * @param display the display
 	 */
 	public void setDisplay(SystemDisplay display) {
@@ -110,6 +112,7 @@ public class SystemContext {
 
 	/**
 	 * Action to take when a state is changed
+	 * 
 	 * @param newState state to change to
 	 */
 	public void changeState(SystemState newState) {
@@ -120,6 +123,7 @@ public class SystemContext {
 
 	/**
 	 * method to pass ZonesReadyEvent to the current state
+	 * 
 	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(ZonesReadyEvent event) {
@@ -128,6 +132,7 @@ public class SystemContext {
 
 	/**
 	 * method to pass ZonesNotReadyEvent to the current state
+	 * 
 	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(ZonesNotReadyEvent event) {
@@ -136,6 +141,7 @@ public class SystemContext {
 
 	/**
 	 * method to pass AwayPressedEvent to the current state
+	 * 
 	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(AwayPressedEvent event) {
@@ -144,6 +150,7 @@ public class SystemContext {
 
 	/**
 	 * method to pass StayPressedEvent to the current state
+	 * 
 	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(StayPressedEvent event) {
@@ -152,6 +159,7 @@ public class SystemContext {
 
 	/**
 	 * method to pass CancelPressedEvent to the current state
+	 * 
 	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(CancelPressedEvent event) {
@@ -160,12 +168,13 @@ public class SystemContext {
 
 	/**
 	 * method to pass MotionDetectedEvent to the current state
+	 * 
 	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(MotionDetectedEvent event) {
 		currentState.handleEvent(event);
 	}
-	
+
 	/**
 	 * Display for Zones Ready
 	 */
@@ -203,6 +212,7 @@ public class SystemContext {
 
 	/**
 	 * Display for Away Countdown
+	 * 
 	 * @param time current timer count
 	 */
 	public void showAwayCountdown(int time) {
@@ -211,6 +221,7 @@ public class SystemContext {
 
 	/**
 	 * Display for Stay Countdown
+	 * 
 	 * @param time current timer count
 	 */
 	public void showStayCountdown(int time) {
@@ -219,6 +230,7 @@ public class SystemContext {
 
 	/**
 	 * Display for Security Breach Countdown
+	 * 
 	 * @param time current timer count
 	 */
 	public void showSecurityBreachCountdown(int time) {
@@ -244,7 +256,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(OneButtonEvent event) {
 		input[inputLength++] = 1;
-		display.inputCharacter("1 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -253,7 +265,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(TwoButtonEvent event) {
 		input[inputLength++] = 2;
-		display.inputCharacter("2 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -262,7 +274,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(ThreeButtonEvent event) {
 		input[inputLength++] = 3;
-		display.inputCharacter("3 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -271,7 +283,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(FourButtonEvent event) {
 		input[inputLength++] = 4;
-		display.inputCharacter("4 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -280,7 +292,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(FiveButtonEvent event) {
 		input[inputLength++] = 5;
-		display.inputCharacter("5 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -289,7 +301,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(SixButtonEvent event) {
 		input[inputLength++] = 6;
-		display.inputCharacter("6 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -298,7 +310,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(SevenButtonEvent event) {
 		input[inputLength++] = 7;
-		display.inputCharacter("7 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -307,7 +319,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(EightButtonEvent event) {
 		input[inputLength++] = 8;
-		display.inputCharacter("8 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -316,7 +328,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(NineButtonEvent event) {
 		input[inputLength++] = 9;
-		display.inputCharacter("9 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
@@ -325,7 +337,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(ZeroButtonEvent event) {
 		input[inputLength++] = 0;
-		display.inputCharacter("0 ");
+		display.inputCharacter("* ");
 		testCode();
 	}
 
