@@ -1,11 +1,11 @@
 package states;
 
 import events.CancelPressedEvent;
-import events.CorrectCodeEvent;
 import events.ZonesNotReadyEvent;
 
 /**
  * SystemState to represent while the system is in StayArmedState
+ * 
  * @author Michael Olson
  *
  */
@@ -21,6 +21,7 @@ public class StayArmedState extends SystemState {
 
 	/**
 	 * Used to get an instance of the Singleton
+	 * 
 	 * @return Instance of the singleton
 	 */
 	public static StayArmedState instance() {
@@ -31,8 +32,8 @@ public class StayArmedState extends SystemState {
 	}
 
 	/**
-	 * Action to take when a ZonesNotReadyEvent is passed
-	 * Change to SecurityBreachState
+	 * Action to take when a ZonesNotReadyEvent is passed Change to
+	 * SecurityBreachState
 	 */
 	@Override
 	public void handleEvent(ZonesNotReadyEvent event) {
@@ -40,17 +41,15 @@ public class StayArmedState extends SystemState {
 	}
 
 	/**
-	 * Action to take when a CancelPressedEvent is passed
-	 * Change to CancelButtonState
+	 * Action to take when a CancelPressedEvent is passed Change to StayCancelState
 	 */
 	@Override
 	public void handleEvent(CancelPressedEvent event) {
-		SystemContext.instance().changeState(CancelButtonState.instance());
+		SystemContext.instance().changeState(StayCancelState.instance());
 	}
 
 	/**
-	 * Action to take when entering the state
-	 * Display Stay Armed
+	 * Action to take when entering the state Display Stay Armed
 	 */
 	@Override
 	public void enter() {

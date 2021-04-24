@@ -6,6 +6,7 @@ import events.CorrectCodeEvent;
 import events.EightButtonEvent;
 import events.FiveButtonEvent;
 import events.FourButtonEvent;
+import events.IncorrectCodeEvent;
 import events.MotionDetectedEvent;
 import events.NineButtonEvent;
 import events.OneButtonEvent;
@@ -19,25 +20,13 @@ import events.ZonesNotReadyEvent;
 import events.ZonesReadyEvent;
 
 /**
- * SystemState base abstract class to all the possible states our system can be in.
+ * SystemState base abstract class to all the possible states our system can be
+ * in.
+ * 
  * @author Michael Olson
  *
  */
 public abstract class SystemState {
-
-	// Code for password input
-	protected static int[] passcode = { 1, 2, 3, 4 };
-	protected static int[] input = new int[4];
-	protected static int inputLength = 0;
-
-	public boolean correctCode() {
-		for (int i = 0; i < 4; i++) {
-			if (passcode[i] != input[i]) {
-				return false;
-			}
-		}
-		return true;
-	}
 
 	/**
 	 * Actions to take when entering state
@@ -51,6 +40,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a ZonesReadyEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(ZonesReadyEvent event) {
@@ -59,6 +49,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a ZonesNotReadyEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(ZonesNotReadyEvent event) {
@@ -67,6 +58,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a StayPressedEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(StayPressedEvent event) {
@@ -75,6 +67,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a CancelPressedEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(CancelPressedEvent event) {
@@ -83,6 +76,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a AwayPressedEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(AwayPressedEvent event) {
@@ -91,6 +85,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a MotionDetectedEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(MotionDetectedEvent event) {
@@ -99,6 +94,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a OneButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(OneButtonEvent event) {
@@ -107,6 +103,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a TwoButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(TwoButtonEvent event) {
@@ -115,6 +112,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a ThreeButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(ThreeButtonEvent event) {
@@ -123,6 +121,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a FourButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(FourButtonEvent event) {
@@ -131,6 +130,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a FiveButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(FiveButtonEvent event) {
@@ -139,6 +139,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a SixButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(SixButtonEvent event) {
@@ -147,6 +148,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a SevenButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(SevenButtonEvent event) {
@@ -155,6 +157,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a EightButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(EightButtonEvent event) {
@@ -163,6 +166,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a NineButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(NineButtonEvent event) {
@@ -171,6 +175,7 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a ZeroButtonEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(ZeroButtonEvent event) {
@@ -179,9 +184,19 @@ public abstract class SystemState {
 
 	/**
 	 * Action to take when a CorrectCodeEvent is passed
+	 * 
 	 * @param event event passed
 	 */
 	public void handleEvent(CorrectCodeEvent event) {
+
+	}
+
+	/**
+	 * Action to take when a IncorrectCodeEvent is passed
+	 * 
+	 * @param event event passed
+	 */
+	public void handleEvent(IncorrectCodeEvent event) {
 
 	}
 }

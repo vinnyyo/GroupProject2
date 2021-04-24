@@ -7,6 +7,7 @@ import events.CorrectCodeEvent;
 import events.EightButtonEvent;
 import events.FiveButtonEvent;
 import events.FourButtonEvent;
+import events.IncorrectCodeEvent;
 import events.MotionDetectedEvent;
 import events.NineButtonEvent;
 import events.OneButtonEvent;
@@ -73,6 +74,8 @@ public class SystemContext {
 		if (inputLength == 4) {
 			if (correctCode()) {
 				SystemContext.instance().handleEvent(CorrectCodeEvent.instance());
+			} else {
+				SystemContext.instance().handleEvent(IncorrectCodeEvent.instance());
 			}
 			input[0] = -1;
 			input[1] = -1;
@@ -350,6 +353,15 @@ public class SystemContext {
 	 * @param event event to pass to the current state.
 	 */
 	public void handleEvent(CorrectCodeEvent event) {
+		currentState.handleEvent(event);
+	}
+
+	/**
+	 * method to pass IncorrectCodeEvent to the current state
+	 * 
+	 * @param event event to pass to the current state.
+	 */
+	public void handleEvent(IncorrectCodeEvent event) {
 		currentState.handleEvent(event);
 	}
 }
