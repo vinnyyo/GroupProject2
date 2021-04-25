@@ -46,7 +46,7 @@ public class SystemContext {
 		String output = "";
 		for (int i = 0; i < 4; i++) {
 			if (input[i] > -1) {
-				output += "*" + " ";
+				output += String.valueOf(input[i]) + " ";
 			}
 		}
 		return output;
@@ -262,7 +262,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(OneButtonEvent event) {
 		input[inputLength++] = 1;
-		display.inputCharacter("* ");
+		display.inputCharacter("1 ");
 		testCode();
 	}
 
@@ -271,7 +271,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(TwoButtonEvent event) {
 		input[inputLength++] = 2;
-		display.inputCharacter("* ");
+		display.inputCharacter("2 ");
 		testCode();
 	}
 
@@ -280,7 +280,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(ThreeButtonEvent event) {
 		input[inputLength++] = 3;
-		display.inputCharacter("* ");
+		display.inputCharacter("3 ");
 		testCode();
 	}
 
@@ -289,7 +289,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(FourButtonEvent event) {
 		input[inputLength++] = 4;
-		display.inputCharacter("* ");
+		display.inputCharacter("4 ");
 		testCode();
 	}
 
@@ -298,7 +298,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(FiveButtonEvent event) {
 		input[inputLength++] = 5;
-		display.inputCharacter("* ");
+		display.inputCharacter("5 ");
 		testCode();
 	}
 
@@ -307,7 +307,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(SixButtonEvent event) {
 		input[inputLength++] = 6;
-		display.inputCharacter("* ");
+		display.inputCharacter("6 ");
 		testCode();
 	}
 
@@ -316,7 +316,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(SevenButtonEvent event) {
 		input[inputLength++] = 7;
-		display.inputCharacter("* ");
+		display.inputCharacter("7 ");
 		testCode();
 	}
 
@@ -325,7 +325,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(EightButtonEvent event) {
 		input[inputLength++] = 8;
-		display.inputCharacter("* ");
+		display.inputCharacter("8 ");
 		testCode();
 	}
 
@@ -334,7 +334,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(NineButtonEvent event) {
 		input[inputLength++] = 9;
-		display.inputCharacter("* ");
+		display.inputCharacter("9 ");
 		testCode();
 	}
 
@@ -343,7 +343,7 @@ public class SystemContext {
 	 */
 	public void handleEvent(ZeroButtonEvent event) {
 		input[inputLength++] = 0;
-		display.inputCharacter("* ");
+		display.inputCharacter("0 ");
 		testCode();
 	}
 
