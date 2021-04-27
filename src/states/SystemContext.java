@@ -38,7 +38,7 @@ public class SystemContext {
 	private static int inputLength = 0;
 
 	/**
-	 * A method that returns the input as a string of asterisks
+	 * A method that returns the input as a string of numbers
 	 * 
 	 * @return the input as a string
 	 */
@@ -252,6 +252,8 @@ public class SystemContext {
 
 	/**
 	 * gets the current Zone status
+	 * 
+	 * @return a boolean representing if the zones are ready
 	 */
 	public boolean getZonesReady() {
 		return display.getZonesReady();
