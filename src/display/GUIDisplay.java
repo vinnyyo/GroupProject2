@@ -59,6 +59,10 @@ public class GUIDisplay extends Application implements SystemDisplay {
 	private CancelButton cancelButton = new CancelButton();
 	private ZonesPane zonesPane = new ZonesPane();
 
+	/**
+	 * Entry point for the javafx GUI system.
+	 * Sets up and creates the display
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		SystemContext.instance().setDisplay(this);

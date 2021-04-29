@@ -11,6 +11,10 @@ import timer.Clock;
  */
 public class Main {
 
+	/**
+	 * Program entry point
+	 * @param args command line parameters 
+	 */
 	public static void main(String[] args) {
 		Clock.instance();
 		new Thread() {
